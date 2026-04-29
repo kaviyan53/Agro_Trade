@@ -1,0 +1,24 @@
+.crop-page { display: flex; flex-direction: column; gap: 20px; max-width: 1100px; }
+
+.fields-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+
+.field-card { padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+
+.field-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.field-card-name { font-size: 15px; font-weight: 600; color: var(--gray-800); }
+.field-card-meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+
+.field-card-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: var(--gray-50); border-radius: var(--radius); padding: 10px; }
+.field-stat { display: flex; flex-direction: column; gap: 2px; }
+.field-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gray-400); }
+.field-stat-val { font-size: 13px; font-weight: 500; color: var(--gray-700); }
+
+.field-notes { font-size: 12px; color: var(--gray-500); font-style: italic; border-left: 2px solid var(--gray-200); padding-left: 8px; }
+
+.field-card-actions { display: flex; gap: 8px; margin-top: 2px; }
+.icon-btn { padding: 8px !important; }
+
+.add-field-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+@media (max-width: 600px) { .form-row-2 { grid-template-columns: 1fr; } }

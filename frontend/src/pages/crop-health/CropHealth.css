@@ -1,24 +1,37 @@
-.crop-page { display: flex; flex-direction: column; gap: 20px; max-width: 1100px; }
+.crop-page { display: flex; flex-direction: column; gap: clamp(1rem, 3vw, 1.25rem); max-width: 1100px; }
 
-.fields-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.fields-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: clamp(0.75rem, 2vw, 0.875rem); }
 
-.field-card { padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.field-card { min-width: 0; padding: clamp(1rem, 3vw, 1.25rem); display: flex; flex-direction: column; gap: 12px; }
 
-.field-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.field-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-width: 0; }
 .field-card-name { font-size: 15px; font-weight: 600; color: var(--gray-800); }
 .field-card-meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
 
-.field-card-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: var(--gray-50); border-radius: var(--radius); padding: 10px; }
+.field-card-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr)); gap: 8px; background: var(--gray-50); border-radius: var(--radius); padding: 10px; }
 .field-stat { display: flex; flex-direction: column; gap: 2px; }
 .field-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gray-400); }
 .field-stat-val { font-size: 13px; font-weight: 500; color: var(--gray-700); }
 
 .field-notes { font-size: 12px; color: var(--gray-500); font-style: italic; border-left: 2px solid var(--gray-200); padding-left: 8px; }
 
-.field-card-actions { display: flex; gap: 8px; margin-top: 2px; }
+.field-card-actions { display: flex; gap: 8px; margin-top: 2px; flex-wrap: wrap; }
 .icon-btn { padding: 8px !important; }
 
 .add-field-form { display: flex; flex-direction: column; gap: 16px; }
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.add-field-card { width: min(100%, 42.5rem); padding: clamp(1rem, 4vw, 1.75rem); }
+.form-actions { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+.form-row-2 { display: grid; grid-template-columns: 1fr; gap: 14px; }
 
-@media (max-width: 600px) { .form-row-2 { grid-template-columns: 1fr; } }
+/* Tablet and up: two-column form rows only after fields have room. */
+@media (min-width: 700px) {
+  .form-row-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .field-card-actions .btn,
+  .add-field-form .btn,
+  .form-actions .btn {
+    width: 100%;
+  }
+}

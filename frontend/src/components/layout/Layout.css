@@ -1,20 +1,27 @@
 .app-shell {
   display: flex;
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 100dvh;
+  overflow-x: hidden;
   background: var(--bg-primary);
 }
 
 .sidebar {
-  width: 220px;
+  width: clamp(13rem, 16vw, 14.5rem);
   flex-shrink: 0;
   background: var(--bg-sidebar);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 20px 12px;
+  padding: clamp(1rem, 1.5vw, 1.25rem) 12px;
   gap: 8px;
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.mobile-sidebar,
+.mobile-nav-backdrop,
+.mobile-nav-toggle,
+.mobile-nav-close {
+  display: none;
 }
 
 .sidebar-brand {
@@ -29,6 +36,12 @@
   margin-bottom: 4px;
 }
 
+.sidebar-brand img {
+  width: auto;
+  height: clamp(2.25rem, 5vw, 2.5rem);
+  object-fit: contain;
+}
+
 .sidebar-nav {
   display: flex;
   flex-direction: column;
@@ -40,7 +53,8 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  padding: 8px 10px;
+  min-height: 44px;
+  padding: 10px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 500;
@@ -81,8 +95,9 @@
 
 .main-content {
   flex: 1;
+  min-width: 0;
   overflow-y: auto;
-  padding: 20px 24px 28px;
+  padding: clamp(0.75rem, 2vw, 1.25rem) clamp(0.75rem, 2.5vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
   background:
     radial-gradient(circle at top right, color-mix(in srgb, var(--green) 10%, transparent), transparent 30%),
     var(--bg-secondary);
@@ -136,6 +151,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
+  min-height: 44px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -152,13 +168,113 @@
   transform: translateY(-1px);
 }
 
-@media (max-width: 768px) {
-  .sidebar { width: 60px; padding: 16px 8px; }
-  .sidebar-brand span, .nav-item span, .user-info, .logout-btn span { display: none; }
-  .sidebar-brand { justify-content: center; padding-bottom: 12px; }
-  .nav-item { justify-content: center; }
-  .user-chip { justify-content: center; }
-  .main-content { padding: 12px; }
-  .dashboard-topbar { padding: 12px 14px; }
-  .dashboard-topbar__title { font-size: 14px; }
+/* Mobile drawer: avoids the cramped sidebar rail below 768px. */
+@media (max-width: 767px) {
+  body.nav-drawer-open {
+    overflow: hidden;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .desktop-sidebar {
+    display: none;
+  }
+
+  .mobile-nav-toggle,
+  .mobile-nav-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+  }
+
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: block;
+    background: rgba(0, 0, 0, 0.36);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-nav-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 41;
+    display: flex;
+    width: min(18rem, calc(100vw - 2rem));
+    max-width: 100%;
+    padding: 16px 12px;
+    transform: translateX(-105%);
+    transition: transform 0.24s ease, background 0.3s ease, border-color 0.3s ease;
+    box-shadow: 18px 0 40px rgba(0, 0, 0, 0.18);
+  }
+
+  .mobile-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .mobile-sidebar .sidebar-brand {
+    justify-content: space-between;
+    padding-bottom: 12px;
+  }
+
+  .mobile-sidebar .nav-item {
+    justify-content: flex-start;
+  }
+
+  .mobile-sidebar .user-chip {
+    justify-content: flex-start;
+  }
+
+  .main-content {
+    min-height: 100dvh;
+    padding: clamp(0.75rem, 3vw, 1.5rem);
+  }
+
+  .dashboard-topbar {
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+  }
+
+  .dashboard-topbar__copy {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .dashboard-topbar__eyebrow {
+    font-size: 10px;
+  }
+
+  .dashboard-topbar__title {
+    font-size: clamp(0.95rem, 4vw, 1.1rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .theme-toggle {
+    width: 44px;
+    padding: 0;
+  }
+
+  .theme-toggle span {
+    display: none;
+  }
 }

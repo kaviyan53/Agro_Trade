@@ -76,7 +76,7 @@ export default function AddField() {
         </button>
       </div>
 
-      <div className="card" style={{padding: 28, maxWidth: 680}}>
+      <div className="card add-field-card">
         <form onSubmit={submit} className="add-field-form">
           <div className="form-row-2">
             <div className="form-group">
@@ -176,7 +176,7 @@ export default function AddField() {
               value={form.notes} onChange={handle} style={{resize:'vertical'}} />
           </div>
 
-          <div style={{display:'flex', gap:10, marginTop:4}}>
+          <div className="form-actions">
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? <span className="spinner" /> : <><Save size={14} /> Save Field</>}
             </button>

@@ -1,7 +1,7 @@
 .weather-page {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(1rem, 3vw, 1.25rem);
   max-width: 1160px;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .weather-search-panel {
-  padding: 18px 20px;
+  padding: clamp(1rem, 3vw, 1.25rem);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-direction: column;
 }
 
 .weather-search-input {
@@ -56,7 +57,8 @@
 }
 
 .weather-search-btn {
-  min-width: 132px;
+  min-width: 0;
+  width: 100%;
   justify-content: center;
 }
 
@@ -71,6 +73,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
+  min-height: 44px;
   border-radius: 999px;
   border: 1px solid var(--gray-200);
   background: #fff;
@@ -111,7 +114,7 @@
 
 .weather-loading-card,
 .weather-empty-card {
-  padding: 28px;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -137,7 +140,7 @@
 }
 
 .weather-hero {
-  padding: 26px;
+  padding: clamp(1rem, 4vw, 1.625rem);
   overflow: hidden;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -167,6 +170,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
+  flex-direction: column;
 }
 
 .weather-hero-copy {
@@ -199,7 +203,7 @@
 }
 
 .weather-hero-temp {
-  font-size: clamp(44px, 7vw, 68px);
+  font-size: clamp(2.625rem, 12vw, 4.25rem);
   line-height: 1;
   font-weight: 800;
   color: var(--gray-900);
@@ -237,8 +241,8 @@
 }
 
 .weather-hero-visual {
-  width: 104px;
-  height: 104px;
+  width: clamp(5.5rem, 18vw, 6.5rem);
+  height: clamp(5.5rem, 18vw, 6.5rem);
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -249,14 +253,14 @@
 }
 
 .weather-icon-img {
-  width: 88px;
-  height: 88px;
+  width: clamp(4.5rem, 14vw, 5.5rem);
+  height: clamp(4.5rem, 14vw, 5.5rem);
 }
 
 .weather-status-strip {
   margin-top: 22px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
   gap: 12px;
 }
 
@@ -286,12 +290,12 @@
 
 .weather-impact-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: 14px;
 }
 
 .weather-impact-card {
-  padding: 20px;
+  padding: clamp(1rem, 3vw, 1.25rem);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -326,7 +330,7 @@
 }
 
 .weather-impact-value {
-  font-size: 26px;
+  font-size: clamp(1.5rem, 5vw, 1.75rem);
   font-weight: 800;
   line-height: 1.1;
   color: var(--gray-900);
@@ -342,6 +346,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .weather-section-heading .section-sub {
@@ -356,12 +361,12 @@
 
 .weather-advisory-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 14px;
 }
 
 .weather-advisory-card {
-  padding: 20px;
+  padding: clamp(1rem, 3vw, 1.25rem);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -416,7 +421,7 @@
 }
 
 .weather-forecast-workspace {
-  padding: 22px;
+  padding: clamp(1rem, 3vw, 1.375rem);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -424,14 +429,14 @@
 
 .weather-forecast-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+  grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
 }
 
 .forecast-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
   gap: 10px;
 }
 
@@ -597,51 +602,30 @@
   border: 1px solid var(--green-100);
 }
 
-@media (max-width: 1100px) {
-  .weather-status-strip,
-  .weather-impact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .weather-advisory-grid,
+/* Laptop and up: use the wider forecast detail split once there is room. */
+@media (min-width: 1024px) {
   .weather-forecast-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.4fr) minmax(17.5rem, 0.9fr);
+  }
+}
+
+/* Tablet and up: search and hero can sit horizontally. */
+@media (min-width: 768px) {
+  .weather-search-row,
+  .weather-hero-main {
+    flex-direction: row;
+    align-items: flex-start;
   }
 
-  .forecast-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .weather-search-btn {
+    width: auto;
+    min-width: 8.25rem;
   }
 }
 
 @media (max-width: 760px) {
-  .weather-search-row,
-  .weather-hero-main {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .weather-search-btn {
-    width: 100%;
-  }
-
-  .weather-hero-visual {
-    width: 88px;
-    height: 88px;
-  }
-
-  .weather-icon-img {
-    width: 72px;
-    height: 72px;
-  }
-
-  .weather-status-strip,
-  .weather-impact-grid,
   .weather-forecast-detail-grid {
     grid-template-columns: 1fr;
-  }
-
-  .forecast-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -650,18 +634,8 @@
     gap: 16px;
   }
 
-  .weather-search-panel,
-  .weather-hero,
-  .weather-forecast-workspace {
-    padding: 16px;
-  }
-
-  .weather-loading-card,
-  .weather-empty-card {
-    padding: 20px;
-  }
-
-  .weather-hero-temp {
-    font-size: 42px;
+  .weather-chip-row .weather-chip {
+    flex: 1 1 100%;
+    justify-content: center;
   }
 }

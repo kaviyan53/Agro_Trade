@@ -17,7 +17,7 @@
 }
 
 .product-section {
-  padding: 160px 0 100px 0;
+  padding: clamp(5rem, 14vw, 10rem) 0 clamp(3.5rem, 10vw, 6.25rem);
   background-color: var(--product-bg-white);
   color: var(--product-text-body);
   font-family: var(--product-font-body);
@@ -26,9 +26,9 @@
 }
 
 .product-container {
-  max-width: 1200px;
+  width: min(100%, 1200px);
   margin: 0 auto;
-  padding: 0 5%;
+  padding-inline: clamp(1rem, 5vw, 3rem);
 }
 
 .product-section h1,
@@ -52,7 +52,7 @@
 }
 
 .product-hero-title {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 9vw, 3.5rem);
   font-weight: 700;
   margin-bottom: 24px;
 }
@@ -62,7 +62,7 @@
 }
 
 .product-hero-desc {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.25rem);
   color: var(--product-text-muted);
   max-width: 800px;
   margin: 0 auto 40px;
@@ -72,6 +72,7 @@
   display: flex;
   gap: 16px;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 60px;
 }
 
@@ -80,6 +81,7 @@
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
+  min-height: 44px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
@@ -112,8 +114,8 @@
 .product-stats-row {
   display: flex;
   justify-content: center;
-  gap: 48px;
-  margin-bottom: 80px;
+  gap: clamp(1.5rem, 6vw, 3rem);
+  margin-bottom: clamp(3rem, 8vw, 5rem);
   flex-wrap: wrap;
 }
 
@@ -123,7 +125,7 @@
 
 .product-stat-val {
   font-family: var(--product-font-head);
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 7vw, 2rem);
   font-weight: 700;
   color: var(--product-text-dark);
 }
@@ -139,7 +141,7 @@
   border-top: 1px solid var(--product-border);
   border-bottom: 1px solid var(--product-border);
   padding: 40px 0;
-  margin-bottom: 80px;
+  margin-bottom: clamp(3rem, 8vw, 5rem);
 }
 
 .product-partner-logos {
@@ -161,25 +163,25 @@
 
 .product-section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(2rem, 6vw, 3.75rem);
   max-width: 800px;
   margin-inline: auto;
 }
 
 .product-section-header h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 7vw, 2.5rem);
   margin-bottom: 16px;
 }
 
 .product-steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: clamp(1rem, 4vw, 2rem);
 }
 
 .product-step-card {
   background: var(--product-bg-white);
-  padding: 40px;
+  padding: clamp(1.25rem, 5vw, 2.5rem);
   border-radius: 16px;
   box-shadow: var(--product-shadow-sm);
   border: 1px solid var(--product-border);
@@ -217,12 +219,10 @@
   color: var(--product-text-body);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .product-hero-title {
-    font-size: 2.5rem;
-  }
-  .product-stats-row {
-    gap: 24px;
+/* Mobile buttons: keep CTAs comfortable and full-width on narrow phones. */
+@media (max-width: 520px) {
+  .product-hero-btns,
+  .product-btn {
+    width: 100%;
   }
 }

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import Chatbot from '../components/Chatbot';
 import LandingSections from '../components/LandingSections';
 import logo from '../components/image.jpg';
+import farmer1 from '../components/farmer_img/farmer1.jpeg';
+import farmer2 from '../components/farmer_img/farmer2.jpeg';
+import farmer3 from '../components/farmer_img/farmer3.jpeg';
 
 // Leaf Icon SVG
 const LeafIcon = ({ className }) => (
@@ -98,11 +101,11 @@ export default function HomePage() {
       
       {/* Navbar */}
       <header className="sticky top-0 z-50 w-full bg-white border-b border-[#e5e7eb] shadow-sm">
-        <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 active:scale-95 duration-200">
-            <img src={logo} alt="Logo" className="h-[50px] object-contain" />
+            <img src={logo} alt="Vijay Agro Trade" style={{ height: '38px', width: 'auto', objectFit: 'contain' }} />
           </div>
 
           {/* Desktop Nav Links */}
@@ -119,18 +122,18 @@ export default function HomePage() {
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-             <Link to="/login" className="text-sm font-[600] text-[#111827] hover:text-[#1a7a3c] transition-colors duration-200 px-4 py-2">
+          <div className="hidden md:flex items-center gap-5">
+            <Link to="/login" className="text-sm font-[600] text-gray-600 hover:text-[#2e7d32] transition-colors duration-200">
               Log In
             </Link>
-            <Link to="/register" className="text-sm font-[700] text-white bg-[#1a7a3c] hover:bg-[#14602f] hover:scale-105 shadow-md transition-all duration-300 px-5 py-2.5 rounded-lg">
+            <Link to="/register" className="flex items-center justify-center text-sm font-[500] text-white bg-[#2e7d32] hover:bg-[#1b5e20] shadow-sm hover:shadow-md px-6 py-2.5 rounded-md transition-all duration-300">
               Get Started
             </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 text-[#111827] hover:bg-gray-100 rounded-md transition-colors"
+            className="md:hidden min-h-11 min-w-11 p-2 text-[#111827] hover:bg-gray-100 rounded-md transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -143,7 +146,7 @@ export default function HomePage() {
         </div>
 
         {/* Mobile Menu Dropdown */}
-        <div className={`md:hidden absolute top-16 left-0 w-full bg-white border-b border-[#e5e7eb] shadow-lg transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 h-auto py-4 px-6' : 'opacity-0 -translate-y-4 h-0 py-0 overflow-hidden'}`}>
+        <div className={`md:hidden absolute top-16 left-0 w-full bg-white border-b border-[#e5e7eb] shadow-lg transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 translate-y-0 h-auto py-4 px-4 sm:px-6' : 'opacity-0 -translate-y-4 h-0 py-0 overflow-hidden'}`}>
           <div className="flex flex-col gap-4">
             {['Product', 'Features', 'Pricing', 'Docs', 'Support'].map((link) => (
               <a 
@@ -156,10 +159,10 @@ export default function HomePage() {
               </a>
             ))}
             <div className="h-px bg-[#e5e7eb] w-full my-2"></div>
-            <Link to="/login" className="w-full text-center font-[600] text-[#111827] hover:bg-gray-50 border border-[#e5e7eb] rounded-lg py-3 transition-colors block">
+            <Link to="/login" className="w-full text-center font-[600] text-gray-700 hover:bg-gray-50 border border-gray-200 rounded-md py-3 transition-colors block">
               Log In
             </Link>
-            <Link to="/register" className="w-full text-center font-[700] text-white bg-[#1a7a3c] hover:bg-[#14602f] rounded-lg py-3 shadow-md transition-colors block">
+            <Link to="/register" className="w-full text-center font-[600] text-white bg-[#2e7d32] hover:bg-[#1b5e20] shadow-sm rounded-md py-3 transition-all duration-300 block">
               Get Started
             </Link>
           </div>
@@ -167,12 +170,12 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <main className="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+      <main className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 md:pt-24 md:pb-32 overflow-hidden">
         {/* Background decorative blobs */}
-        <div className="absolute top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/4 w-[800px] h-[800px] rounded-full bg-[#f0fdf4] blur-3xl opacity-60"></div>
-        <div className="absolute bottom-0 left-0 -z-10 -translate-x-1/3 translate-y-1/4 w-[600px] h-[600px] rounded-full bg-[#f0fdf4] blur-3xl opacity-60"></div>
+        <div className="hidden lg:block absolute top-0 right-0 -z-10 translate-x-1/3 -translate-y-1/4 aspect-square rounded-full bg-[#f0fdf4] blur-3xl opacity-60" style={{ width: 'min(48rem, 55vw)' }}></div>
+        <div className="hidden lg:block absolute bottom-0 left-0 -z-10 -translate-x-1/3 translate-y-1/4 aspect-square rounded-full bg-[#f0fdf4] blur-3xl opacity-60" style={{ width: 'min(36rem, 45vw)' }}></div>
 
-        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
           
           {/* Left Column - Content */}
           <div className={`flex flex-col items-start gap-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -184,7 +187,7 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-[64px] leading-[1.1] font-[800] tracking-tight text-[#111827]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] font-[800] tracking-tight text-[#111827]">
               Intelligence for the <br className="hidden lg:block" />
               <span className="text-[#1a7a3c] relative inline-block">
                 Next Generation 
@@ -207,46 +210,72 @@ export default function HomePage() {
                 onClick={() => {
                   window.dispatchEvent(new Event('open-chatbot'));
                 }}
-                className="w-full sm:w-auto flex items-center justify-center gap-3 text-base md:text-lg font-[600] text-white bg-[#2e7d32] hover:bg-[#1b5e20] shadow-md transition-all duration-300 px-8 py-4 rounded-lg"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 text-base font-[600] text-white bg-[#2e7d32] hover:bg-[#1b5e20] shadow-sm transition-all duration-300 px-6 py-3 rounded-md"
               >
                 Try the Chatbot 
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 ml-1"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
               </button>
               <Link 
                 to="/dashboard"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 text-base md:text-lg font-[600] text-[#2e7d32] bg-white border-2 border-[#e5e7eb] hover:bg-gray-50 shadow-sm transition-all duration-300 px-8 py-4 rounded-lg"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 text-base font-[600] text-[#2e7d32] bg-white border border-[#e5e7eb] hover:bg-gray-50 shadow-sm transition-all duration-300 px-6 py-3 rounded-md"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
                 View Dashboard
               </Link>
             </div>
 
-            {/* Social Proof */}
+            {/* Social Proof - WhatsApp Style */}
+
             <div className="flex items-center gap-4 mt-10 w-full max-w-md">
-              <div className="flex -space-x-3">
-                <img className="w-14 h-14 rounded-full border-4 border-white object-cover shadow-md bg-gray-100 z-30 transform hover:scale-110 transition-transform duration-200" src="https://i.pravatar.cc/100?img=11" alt="Farmer 1" />
-                <img className="w-14 h-14 rounded-full border-4 border-white object-cover shadow-md bg-gray-100 z-20 transform hover:scale-110 transition-transform duration-200" src="https://i.pravatar.cc/100?img=5" alt="Farmer 2" />
-                <img className="w-14 h-14 rounded-full border-4 border-white object-cover shadow-md bg-gray-100 z-10 transform hover:scale-110 transition-transform duration-200" src="https://i.pravatar.cc/100?img=3" alt="Farmer 3" />
+              <div className="flex items-center">
+                {/* Main Profile */}
+                <div className="relative group cursor-pointer">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7be495] via-[#25D366] to-[#54e0c7] p-[2px]"></div>
+                  <div className="relative w-[68px] h-[68px] rounded-full bg-white flex items-center justify-center">
+                    <img className="w-[60px] h-[60px] rounded-full object-cover" src={farmer1} alt="Farmer 1" />
+                  </div>
+                </div>
+                {/* Secondary Profile */}
+                <div className="relative group cursor-pointer -ml-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7be495] via-[#25D366] to-[#54e0c7] p-[2px]"></div>
+                  <div className="relative w-[68px] h-[68px] rounded-full bg-white flex items-center justify-center">
+                    <img className="w-[60px] h-[60px] rounded-full object-cover" src={farmer2} alt="Farmer 2" />
+                  </div>
+                </div>
+                {/* Third Profile */}
+                <div className="relative group cursor-pointer -ml-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7be495] via-[#25D366] to-[#54e0c7] p-[2px]"></div>
+                  <div className="relative w-[68px] h-[68px] rounded-full bg-white flex items-center justify-center">
+                    <img className="w-[60px] h-[60px] rounded-full object-cover" src={farmer3} alt="Farmer 3" />
+                  </div>
+                </div>
+                {/* More users indicator */}
+                <div className="relative group cursor-pointer -ml-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#7be495] via-[#25D366] to-[#54e0c7] p-[2px]"></div>
+                  <div className="relative w-[68px] h-[68px] rounded-full bg-white flex items-center justify-center">
+                    <span className="text-2xl font-bold text-[#128C7E]">+147</span>
+                  </div>
+                </div>
               </div>
               <span className="text-base font-[500] text-[#6b7280]">
-                <strong className="text-[#111827] text-lg font-[800]">500+</strong> commercial farms growing smarter
+                <strong className="text-[#111827] text-lg font-[800]">150+</strong> commercial farms growing smarter
               </span>
             </div>
 
           </div>
 
           {/* Right Column - Dashboard Card Graphic */}
-          <div className={`relative w-full aspect-square md:aspect-auto md:h-[600px] flex items-center justify-center lg:justify-end transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+          <div className={`relative w-full flex flex-col items-center justify-center gap-4 lg:items-end transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`} style={{ minHeight: 'min(38rem, 70vh)' }}>
             
             {/* Main Interactive Card */}
-            <div className="relative w-full max-w-[500px] bg-white rounded-3xl p-6 shadow-2xl shadow-[#1a7a3c]/10 border border-[#e5e7eb] z-10 transition-transform hover:-translate-y-2 duration-500">
+            <div className="relative w-full max-w-lg bg-white rounded-3xl p-4 sm:p-6 shadow-2xl shadow-[#1a7a3c]/10 border border-[#e5e7eb] z-10 transition-transform hover:-translate-y-2 duration-500">
               
               <div className="flex justify-between items-center mb-8">
-                <h3 className="font-[800] text-xl text-[#111827]">Field Metrics (#A-42)</h3>
+                <h3 className="font-[800] text-xl text-[#111827]">Field Metrics ❤️</h3>
                 <span className="px-3 py-1 bg-[#f0fdf4] text-[#1a7a3c] text-xs font-[700] rounded-full">Live Synced</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 <div className="bg-gray-50 rounded-2xl p-4 border border-[#e5e7eb]">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
@@ -282,7 +311,7 @@ export default function HomePage() {
                   <span className="text-sm font-[600] text-[#6b7280]">Yield Projection</span>
                   <span className="text-sm font-[700] text-[#1a7a3c] hover:underline cursor-pointer">Detailed Report</span>
                 </div>
-                <div className="h-[120px] bg-gray-50 rounded-xl w-full border border-gray-100 overflow-hidden relative">
+                <div className="h-32 bg-gray-50 rounded-xl w-full border border-gray-100 overflow-hidden relative">
                   {/* SVG Chart Graphic */}
                   <svg className="absolute bottom-0 w-full h-full preserve-3d" viewBox="0 0 400 120" preserveAspectRatio="none">
                     <path d="M0 30 H400 M0 60 H400 M0 90 H400" stroke="#f3f4f6" strokeWidth="1" fill="none" />
@@ -301,18 +330,20 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <div className="flex justify-between text-xs text-gray-400 font-medium px-2 mt-2 uppercase tracking-wide">
+                  <span>Mon</span>
                   <span>Tue</span>
                   <span>Wed</span>
                   <span>Thu</span>
                   <span>Fri</span>
                   <span>Sat</span>
                   <span>Sun</span>
+                  
                 </div>
               </div>
             </div>
 
             {/* Float Alert Popup */}
-            <div className={`absolute top-4 -right-4 lg:-right-12 bg-white rounded-xl shadow-xl shadow-red-900/10 border border-red-100 p-4 flex items-start gap-3 w-72 z-20 transition-all duration-700 delay-700 ease-out ${isLoaded ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4'}`}>
+            <div className={`w-full max-w-xs lg:absolute lg:top-4 lg:-right-8 xl:-right-12 bg-white rounded-xl shadow-xl shadow-red-900/10 border border-red-100 p-4 flex items-start gap-3 z-20 transition-all duration-700 delay-700 ease-out ${isLoaded ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4'}`}>
               <div className="p-2 bg-red-50 text-red-500 rounded-lg shrink-0">
                  <WarningIcon className="w-5 h-5" />
               </div>
@@ -324,7 +355,7 @@ export default function HomePage() {
             </div>
 
             {/* Back decorative element */}
-            <div className="absolute -z-10 bg-[#f0fdf4] border border-[#1a7a3c]/10 rounded-3xl w-[90%] h-[90%] top-[10%] right-[-5%] rotate-3 transition-transform hover:rotate-6 duration-500"></div>
+            <div className="hidden lg:block absolute -z-10 bg-[#f0fdf4] border border-[#1a7a3c]/10 rounded-3xl w-11/12 h-5/6 top-[10%] right-0 rotate-3 transition-transform hover:rotate-6 duration-500"></div>
 
           </div>
 
@@ -333,7 +364,7 @@ export default function HomePage() {
 
       {/* Partners Section */}
       <section className="border-y border-[#e5e7eb] bg-gray-50 py-10">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm font-[700] text-[#6b7280] tracking-widest uppercase mb-8">Integrated with Industry Leaders</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
             {['Agritech Co.', 'FarmOS', 'CropData', 'SoilSense', 'YieldMax'].map((partner, idx) => (

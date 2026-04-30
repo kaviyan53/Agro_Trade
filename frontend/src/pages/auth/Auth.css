@@ -1,16 +1,16 @@
 .auth-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f0faf4 0%, #e8f5ec 50%, #f9fafb 100%);
-  padding: 24px;
+  padding: clamp(1rem, 5vw, 1.5rem);
 }
 
 .auth-card {
   width: 100%;
-  max-width: 400px;
-  padding: 36px 32px;
+  max-width: min(100%, 26rem);
+  padding: clamp(1.5rem, 7vw, 2.25rem) clamp(1rem, 6vw, 2rem);
 }
 
 .auth-brand {
@@ -18,7 +18,7 @@
   margin-bottom: 24px;
 }
 .auth-brand h1 {
-  font-size: 20px;
+  font-size: clamp(1.25rem, 5vw, 1.5rem);
   font-weight: 600;
   color: var(--gray-800);
   margin: 10px 0 4px;

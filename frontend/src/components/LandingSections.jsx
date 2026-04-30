@@ -387,6 +387,96 @@ export default function LandingSections() {
             .landing-scope .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .landing-scope .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        /* Mobile-first responsive overrides: keeps landing cards readable from 320px up. */
+        .landing-scope .s-container {
+            width: min(100%, 1200px);
+            padding-inline: clamp(1rem, 5vw, 3rem);
+        }
+        .landing-scope .s-section {
+            padding-block: clamp(3.5rem, 10vw, 6.25rem);
+        }
+        .landing-scope .s-section-header {
+            margin-bottom: clamp(2rem, 7vw, 3.75rem);
+        }
+        .landing-scope .s-section-header h2 {
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+        }
+        .landing-scope .s-section-header p,
+        .landing-scope .testimonial-text,
+        .landing-scope .webinar-banner p {
+            max-width: 70ch;
+        }
+        .landing-scope .stats-row {
+            gap: clamp(1.25rem, 6vw, 3rem);
+            margin-block: clamp(2.5rem, 8vw, 5rem);
+        }
+        .landing-scope .stat-val,
+        .landing-scope .plan-price {
+            font-size: clamp(1.75rem, 8vw, 3rem);
+        }
+        .landing-scope .steps-grid,
+        .landing-scope .features-grid,
+        .landing-scope .testimonials-grid,
+        .landing-scope .pricing-grid,
+        .landing-scope .docs-grid,
+        .landing-scope .support-options {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+            gap: clamp(1rem, 4vw, 2rem);
+        }
+        .landing-scope .step-card,
+        .landing-scope .feature-card,
+        .landing-scope .testimonial-card,
+        .landing-scope .pricing-card,
+        .landing-scope .contact-card,
+        .landing-scope .webinar-banner {
+            padding: clamp(1.25rem, 5vw, 2.5rem);
+        }
+        .landing-scope .support-container,
+        .landing-scope .footer-grid {
+            grid-template-columns: 1fr;
+            gap: clamp(1.5rem, 6vw, 3.75rem);
+        }
+        .landing-scope .subscribe-form,
+        .landing-scope .footer-bottom {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .landing-scope .s-btn,
+        .landing-scope .subscribe-btn,
+        .landing-scope .form-control {
+            min-height: 44px;
+        }
+        .landing-scope .pricing-card.highlight,
+        .landing-scope .pricing-card.highlight:hover {
+            transform: none;
+        }
+
+        @media (min-width: 768px) {
+            .landing-scope .support-container {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            }
+            .landing-scope .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .landing-scope .subscribe-form,
+            .landing-scope .footer-bottom {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .landing-scope .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+            .landing-scope .pricing-card.highlight {
+                transform: scale(1.03);
+            }
+            .landing-scope .pricing-card.highlight:hover {
+                transform: scale(1.03) translateY(-5px);
+            }
+        }
       `}</style>
 
       {/* From Product Section (Stats & Steps only) */}

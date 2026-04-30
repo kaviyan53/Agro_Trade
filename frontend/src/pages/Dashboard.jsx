@@ -49,7 +49,7 @@ export default function Dashboard() {
             {user?.farm_name || 'Your Farm'} · {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
         </div>
-        <button className="btn btn-primary" onClick={() => navigate('/crop-health/add')}>
+        <button className="btn btn-primary" onClick={() => navigate('/dashboard/crop-health/add')}>
           <Plus size={15} /> Add Field
         </button>
       </div>
@@ -70,14 +70,14 @@ export default function Dashboard() {
         <div className="card dash-section">
           <div className="dash-section-header">
             <span className="section-title" style={{ marginBottom: 0 }}>My Fields</span>
-            <button className="btn btn-outline" style={{ fontSize: 12, padding: '5px 10px' }} onClick={() => navigate('/crop-health')}>
+            <button className="btn btn-outline" style={{ fontSize: 12, padding: '5px 10px' }} onClick={() => navigate('/dashboard/crop-health')}>
               View all <ArrowRight size={12} />
             </button>
           </div>
           {fields.length === 0 ? (
             <div className="empty-state" style={{ padding: '32px 0' }}>
               <Leaf size={32} />
-              <p>No fields yet. <button className="link-btn" onClick={() => navigate('/crop-health/add')}>Add your first field</button></p>
+              <p>No fields yet. <button className="link-btn" onClick={() => navigate('/dashboard/crop-health/add')}>Add your first field</button></p>
             </div>
           ) : (
             <div className="field-list">
@@ -101,7 +101,7 @@ export default function Dashboard() {
         <div className="card dash-section">
           <div className="dash-section-header">
             <span className="section-title" style={{ marginBottom: 0 }}>Recent Alerts</span>
-            <button className="btn btn-outline" style={{ fontSize: 12, padding: '5px 10px' }} onClick={() => navigate('/alerts')}>
+            <button className="btn btn-outline" style={{ fontSize: 12, padding: '5px 10px' }} onClick={() => navigate('/dashboard/alerts')}>
               View all <ArrowRight size={12} />
             </button>
           </div>
@@ -132,7 +132,7 @@ export default function Dashboard() {
           { label: 'Run Prediction', sub: 'Get AI crop advice', path: '/predictions', icon: '🤖' },
           { label: 'View Analytics', sub: 'Health trends & charts', path: '/analytics', icon: '📊' },
         ].map((q) => (
-          <button key={q.path} className="card quick-card" onClick={() => navigate(q.path)}>
+          <button key={q.path} className="card quick-card" onClick={() => navigate(q.path.startsWith('/dashboard') ? q.path : `/dashboard${q.path}`)}>
             <span className="quick-icon">{q.icon}</span>
             <div>
               <div className="quick-label">{q.label}</div>
